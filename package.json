@@ -1,0 +1,22 @@
+{
+  "name": "starry",
+  "version": "1.0.0",
+  "description": "so WIP, very undocumented",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/framp/starry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/framp/starry/issues"
+  },
+  "homepage": "https://github.com/framp/starry#readme"
+}

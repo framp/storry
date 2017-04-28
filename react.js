@@ -5,7 +5,7 @@ export default class Provider extends React.Component {
     super(props)
     this.state = props.store.state
     props.store.addListener((state) => this.setState(state)) 
-   }
+  }
   render() {
     const children = React.Children.map(this.props.children, (child) => 
       React.cloneElement(child, this.state))
