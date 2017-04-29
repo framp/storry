@@ -2,11 +2,17 @@
   "name": "starry",
   "version": "1.0.0",
   "description": "so WIP, very undocumented",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "browser": "dist/starry.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
+    "build-es": "BABEL_ENV=es babel src --out-dir es",
+    "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir lib",
+    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,9 +20,13 @@
     "url": "git+https://github.com/framp/starry.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/framp/starry/issues"
   },
-  "homepage": "https://github.com/framp/starry#readme"
+  "homepage": "https://github.com/framp/starry#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0"
+  }
 }

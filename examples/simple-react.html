@@ -27,10 +27,13 @@ const resetCounter = (state) =>
   Object.assign({}, state, { counter: 0 })
 const updateTopicField = (state, event) => 
   Object.assign({}, state, { topic: event.target.value })
-const loadRandomPic = (state, event) => 
-  fetch(giphyAPI + state.topic)
+const updateImage = (state, image) => 
+  Object.assign({}, state, { image })
+const loadRandomPic = () => 
+  fetch(giphyAPI + store.state().topic)
     .then(res => res.json())
-    .then(res => Object.assign({}, state, { image: res.data.image_original_url }))
+    .then(res => res.data.image_original_url)
+    .then(store.run(updateImage))
 
 //Define your App, receiving the state as props
 const App = (state) => <div>
@@ -39,7 +42,7 @@ const App = (state) => <div>
   <button onClick={store.run(increaseCounter)}>+</button>
   <br /><br />
   <input type="text" onChange={store.run(updateTopicField)} value={state.topic} /> 
-  <button onClick={store.run(loadRandomPic)}>load random picture</button>
+  <button onClick={loadRandomPic}>load random picture</button>
   <br />
   <img src={state.image} />
 </div>
@@ -56,7 +59,9 @@ ReactDOM.render(
 //Set counter to 0 every 30 seconds
 setInterval(() => store.run(resetCounter)(), 30000)
 //Get a picture
-store.run(loadRandomPic)()
+loadRandomPic()
+//Listen to state changes
+store.listen((state) => console.log('NEW STATE', state))
 
     </script>
   </body>

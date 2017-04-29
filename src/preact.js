@@ -1,11 +1,10 @@
-const { h, cloneElement, Component } = require('preact')
+import { h, cloneElement, Component } from 'preact'
 
-module.exports = class Provider extends Component {
+export default class Provider extends Component {
   constructor(props) {
     super(props)
     this.state = props.store.state
-    props.store.on('change', this.setState.bind(this)) 
-    props.store.on('error', console.error.bind(console)) 
+    props.store.listen(this.setState.bind(this))
    }
   render() {
     const children = this.props.children.map((child) => 

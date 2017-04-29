@@ -7,10 +7,8 @@ var Provider = (function (_super) {
   __extends(Provider, _super)
   function Provider(props) {
     _super.call(this, props)
-    this.state = props.store.state
-    window.state = this.state
-    props.store.on('change', this.setState.bind(this))
-    props.store.on('error', console.error.bind(console))
+    this.state = props.store.state()
+    props.store.listen(this.setState.bind(this));
   }
   Provider.prototype.render = function () {
     var _this = this
