@@ -1,9 +1,12 @@
-import starry from '..'
+const assert = require('assert')
+const starry = require('..')
 
 const store = starry({ users: [] })
 
 const addUser = (state, data) => 
   Object.assign({}, state, { users: state.users.concat(data) })
-store.run(addUser)('Jack')
-store.run(addUser)('Amelie')
-assert.equal(store.state, [])
+
+Promise.all([
+  store.run(addUser)('Jack'),
+  store.run(addUser)('Amelie')
+]).then(() => assert.equal(store.state(), { users: [ 'Jack', 'Amelie' ] }))

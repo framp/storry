@@ -1,6 +1,6 @@
-const { h, cloneElement, Component } = require('preact')
+import { h, cloneElement, Component } from 'preact'
 
-module.exports = class Provider extends Component {
+export default class Provider extends Component {
   constructor(props) {
     super(props)
     this.state = props.store.state

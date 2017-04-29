@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Starry Example</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react-dom.js"></script>
+    <script src="../browser/index.js"></script>
+    <script src="../browser/react.js"></script>
+    <script type="text/babel">
+
+const giphyAPI = 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='
+
+//Create your store
+const store = starry({ 
+  counter: 42,
+  topic: 'cat'
+ })
+
+//Define your actions
+const increaseCounter = (state) => 
+  Object.assign({}, state, { counter: state.counter+1 })
+const resetCounter = (state) => 
+  Object.assign({}, state, { counter: 0 })
+const updateTopicField = (state, event) => 
+  Object.assign({}, state, { topic: event.target.value })
+const loadRandomPic = (state, event) => 
+  fetch(giphyAPI + state.topic)
+    .then(res => res.json())
+    .then(res => Object.assign({}, state, { image: res.data.image_original_url }))
+
+//Define your App, receiving the state as props
+const App = (state) => <div>
+  Counter: {state.counter}
+  <br />
+  <button onClick={store.run(increaseCounter)}>+</button>
+  <br /><br />
+  <input type="text" onChange={store.run(updateTopicField)} value={state.topic} /> 
+  <button onClick={store.run(loadRandomPic)}>load random picture</button>
+  <br />
+  <img src={state.image} />
+</div>
+
+//Render your application wrapped 
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+	document.getElementById('root')
+)
+
+//Have fun!
+//Set counter to 0 every 30 seconds
+setInterval(() => store.run(resetCounter)(), 30000)
+//Get a picture
+store.run(loadRandomPic)()
+
+    </script>
+  </body>
+</html>

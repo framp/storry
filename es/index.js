@@ -1,5 +1,5 @@
-module.exports = (state = {}, listeners = {}) => ({
-	state: () => state,
+export default (state = {}, listeners = {}) => ({
+	state,
 	run: reduce => event =>
 		Promise.resolve(reduce(state, event))
 			.then(result => state = result)

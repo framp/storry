@@ -1,6 +1,6 @@
-const { createElement, cloneElement, Children, Component } = require('react')
+import { createElement, cloneElement, Children, Component } from 'react'
 
-module.exports = class Provider extends Component {
+export default class Provider extends Component {
   constructor(props) {
     super(props)
     this.state = props.store.state
