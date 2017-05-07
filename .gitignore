@@ -21,3 +21,6 @@ Thumbs.db
 /umd
 /dist
 /es
+/index.js
+/preact.js
+/react.js
