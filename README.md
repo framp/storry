@@ -136,6 +136,8 @@ render(<Provider store={store}><App /></Provider>, document.body)
 
 Our main `App` component will receive the state and will pass a portion of it, to the other components which make our application.
 
+All the other components can be dumb, stateless, pure functions.
+
 ```javascript
 //components/app/index.js
 import Song from '../song'
