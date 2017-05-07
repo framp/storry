@@ -73,6 +73,16 @@ By importing `starry/starry-preact` or `starry/starry-react` you'll get a `Provi
 
 All the children of `Provider` will receive the state of the application as `props` everytime it's updated.
 
+```javascript
+//index.js
+...
+import Provider from 'starry/starry-preact'
+import App from './components/app'
+import store from './store'
+...
+render(<Provider store={store}><App /></Provider>, document.body)
+```
+
 ## step by step common (p)react pattern 
 
 We're going to use one store for our application.
