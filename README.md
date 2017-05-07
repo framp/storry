@@ -23,6 +23,7 @@ assert(store.state().user, 'Mary')
  - Want to read the code? [It's 8 lines!](src/storry.js)
  - Want to see the full API? [Yup!](#api)
  - Want to see even more examples? [Here!](examples)
+ - Want to check out a full project setup? [Say no more](https://github.com/framp/storry-preact-boilerplate-example)
 
 ## step by step explanation
 
