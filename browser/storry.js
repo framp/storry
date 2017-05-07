@@ -3,9 +3,9 @@ var storry = function (state, listeners) {
   if (!listeners) { listeners = [] }
   return ({
     state: function () { return state },
-    action: function (reduce) {
+    action: function (transform) {
       return function (event) {
-        state = reduce(state, event)
+        state = transform(state, event)
         listeners.forEach(function (listener) { return listener(state) })
       }
     },

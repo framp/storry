@@ -1,7 +1,7 @@
 export default (state = {}, listeners = []) => ({
   state: () => state,
-  action: reduce => event => {
-    state = reduce(state, event)
+  action: transform => event => {
+    state = transform(state, event)
     listeners.forEach(listener => listener(state))
   },
   listen: callback => listeners.push(callback)
