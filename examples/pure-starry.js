@@ -3,9 +3,9 @@ const starry = require('..')
 
 const store = starry({ users: [] })
 
-const addUser = (state, data) => 
-  Object.assign({}, state, { users: state.users.concat(data) })
+const addUser = store.action((state, data) =>
+  Object.assign({}, state, { users: state.users.concat(data) }))
 
-store.run(addUser)('Jack')
-store.run(addUser)('Amelie')
+addUser('Jack')
+addUser('Amelie')
 assert.deepEqual(store.state(), { users: [ 'Jack', 'Amelie' ] })

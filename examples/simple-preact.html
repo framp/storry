@@ -6,11 +6,11 @@
   <body>
     <div id="root"></div>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react-dom.js"></script>
+    <script src="https://npmcdn.com/preact@8.1.0"></script>
     <script src="../browser/starry.js"></script>
-    <script src="../browser/starry-react.js"></script>
+    <script src="../browser/starry-preact.js"></script>
     <script type="text/babel">
+/** @jsx preact.h */
 
 const giphyAPI = 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='
 
@@ -48,7 +48,7 @@ const App = (state) => <div>
 </div>
 
 //Render your application wrapped 
-ReactDOM.render(
+preact.render(
   <Provider store={store}>
     <App />
   </Provider>,

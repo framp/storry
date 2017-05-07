@@ -1,25 +1,34 @@
 {
   "name": "starry",
   "version": "1.0.0",
-  "description": "so WIP, very undocumented",
-  "main": "lib/index.js",
+  "description": "State Management made simple",
+  "main": "lib/starry.js",
   "browser": "dist/starry.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
-  "directories": {
-    "example": "examples"
-  },
+  "module": "src/starry.js",
+  "jsnext:main": "src/starry.js",
   "scripts": {
-    "build-es": "BABEL_ENV=es babel src --out-dir es",
-    "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir lib",
-    
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build-commonjs && npm run build-dist && npm run build-umd",
+    "build-commonjs": "babel src --out-dir lib --presets es2015 --plugins add-module-exports",
+    "build-umd": "babel src --out-dir umd --presets es2015 --plugins add-module-exports,transform-es2015-modules-umd",
+    "build-dist": "mkdir -p dist && for file in browser/*.js; do uglifyjs --compress --mangle --output ${file/browser/dist} -- $file; done",
+    "clean": "rm -rf dist lib umd",
+    "test": "tape -r babel-register test/**/*.js | faucet",
+    "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
+    "prepublish": "npm run clean && npm run lint && npm test && npm run build"
   },
+  "keywords": [
+    "state",
+    "simple",
+    "management",
+    "redux",
+    "flux",
+    "elm"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/framp/starry.git"
   },
-  "author": "",
+  "author": "Federico Rampazzo <frampone@gmail.com> (http://framp.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/framp/starry/issues"
@@ -27,6 +36,13 @@
   "homepage": "https://github.com/framp/starry#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0"
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.24.1",
+    "faucet": "0.0.1",
+    "standard": "^10.0.2",
+    "tape": "^4.6.3",
+    "uglify-js": "^2.8.23"
   }
 }
