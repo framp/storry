@@ -21,6 +21,7 @@ assert(store.state().user, 'Mary')
  - Want to understand the library more in depth? [Check this explanation!](#step-by-step-explanation)
  - Want to jump to an example with React? [Click here!](#step-by-step-common-preact-pattern)
  - Want to read the code? [It's 8 lines!](src/storry.js)
+ - Want to see the full API? [Yup!](#api)
  - Want to see even more examples? [Here!](examples)
 
 ## step by step explanation
