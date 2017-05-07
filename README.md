@@ -18,12 +18,12 @@ updateUser({ user: 'Mary' })
 assert(store.state().user, 'Mary')
 ```
 
-Want to understand the library more in depth? [Check this explanation!](#)
-Want to jump to an example with React? [Click here!](#)
-Want to read the code? [It's 8 lines!](#)
-Want to see even more examples? [Here!](#)
+ - Want to understand the library more in depth? [Check this explanation!](#step-by-step-explanation)
+ - Want to jump to an example with React? [Click here!](#step-by-step-common-preact-pattern)
+ - Want to read the code? [It's 8 lines!](src/starry.js)
+ - Want to see even more examples? [Here!](examples)
 
-# step by step explanation
+## step by step explanation
 
 Starry provides a data store which contains your state.
 
@@ -38,8 +38,11 @@ store.state() // { user: 'Jack' }
 ```
 
 The state can be updated with a special function *action*.
+
 To create an *action* we need to provide a pure function `(state, event) => newState`.
+
 This function will be used to generate the new state, using the old state and the event passed to our *action*.
+
 Let's define our *action*:
 
 ```javascript
@@ -55,21 +58,27 @@ store.state() // { user: 'Mary' }
 ```
 
 Every time the state gets updated all the store listeners gets fired.
+
 If you're interested in reacting to these events you can subscribe to the store.
+
 ```javascript
 store.listen((state) => console.log("I just received a new state", state))
 ```
 
-# (p)react bindings
+## (p)react bindings
 
 Starry ships with bindings for [React](https://facebook.github.io/react/) and [Preact](https://preactjs.com/).
+
 By importing `starry/starry-preact` or `starry/starry-react` you'll get a `Provider` component which can be used to wrap your application.
+
 All the children of `Provider` will receive the state of the application as `props` everytime it's updated.
 
-# step by step common (p)react pattern 
+## step by step common (p)react pattern 
 
 We're going to use one store for our application.
+
 Let's define it in its own file, so that we can access it from any other file, and let's initialize it with some initial data.
+
 This step could be, for example, receiving data from an isomorphic/universal application.
 
 ```javascript
@@ -83,6 +92,7 @@ export default starry({
 ```
 
 Let's import our application main component `App` and Starry's `Provider` component.
+
 We're going to render `App` wrapped in `Provider`, so that `App` will receive the state of our application.
 
 ```javascript
@@ -132,12 +142,15 @@ export const vote = (track) =>
 ```
 
 The `play(track)` *action* modifies the current state, adding a field `playing` to it.
+
 `vote(track)` instead makes an asynchronous operation (a XHR request) and set a state dependant on the response received.
 
-# motivations
+## motivations
 
 The Redux architecture brings to the table a lot of elm benefits. 
+
 Having a single store and having well defined boundaries to mutate the state of your application is a great way to limit errors.
+
 Unfortunately it carries a lot of action-related boilerplate and it's hard to teach to unexperienced developers.
 
 Starry wants to preserve the benefits while minimizing boilerplate and while keeping the learning curve shallow.
