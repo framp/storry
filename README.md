@@ -6,10 +6,10 @@ How simple?
 
 ```javascript
 import storry from 'storry'
+import { Map } from 'immutable'
 
-const store = storry({ user: 'Jack' })
-const updateUser = store.action((state, event) => 
-  Object.assign({}, state, { user: event.user}))
+const store = storry(Map({ user: 'Jack' }))
+const updateUser = store.action((state, event) => state.set('user', event.user))
 
 store.listen((state) => console.log('NEW STATE', state))
 
@@ -49,6 +49,21 @@ Let's define our *action*:
 const updateUser = store.action((state, event) => 
   Object.assign({}, state, { user: event.user}))
 ```
+
+When defining our action we can use [ramda](ramdajs.com) or [immutable](https://facebook.github.io/immutable-js/) to simplify our task.
+
+```javascript
+import { Map } from 'immutable'
+const updateUser = store.action((state, event) => state.set('user', event.user))
+```
+
+```javascript
+import { set, lensProp } from 'ramda'
+const updateUser = store.action((state, event) => 
+  set(lensProp('user'), event.user, state)
+```
+
+All three implementations behave in the same way.
 
 It's time to use our *action*.
 
@@ -138,6 +153,10 @@ export default ({ track, votes }) => <div>
 
 Each component with interactive elements will have a relevant `action` files which contain the logic of our application.
 
+In this case, we know the value we want to pass before the action is triggered, therefore we can create a function which accepts data and return an *action*.
+
+The *action* is going to be invoked with the Click event but the event is going to be ignored.
+
 ```javascript
 //components/song/actions
 import store from '../../store'
@@ -147,13 +166,15 @@ export const play = (track) => store.action((state) =>
 export const vote = (track) => 
   fetch('/api/vote/' + track)
     .then(res => res.json())
-    .then(store.action((state, event) => 
-      Object.assign({}, state, { votes: event.votes }))
+    .then(store.action((state, data) => 
+      Object.assign({}, state, { votes: data.votes }))
 ```
 
 The `play(track)` *action* modifies the current state, adding a field `playing` to it.
 
-`vote(track)` instead makes an asynchronous operation (a XHR request) and set a state dependant on the response received.
+`vote(track)` instead makes an asynchronous operation (a XHR request) and set a state dependant on the result of the operation. 
+
+In this case we are assuming the API will return a list of all the votes, that we can use to update our application's state.
 
 ## motivations
 
