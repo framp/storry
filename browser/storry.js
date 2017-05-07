@@ -1,4 +1,4 @@
-var starry = function (state, listeners) {
+var storry = function (state, listeners) {
   if (!state) { state = {} }
   if (!listeners) { listeners = [] }
   return ({

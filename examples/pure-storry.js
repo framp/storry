@@ -1,7 +1,7 @@
 const assert = require('assert')
-const starry = require('..')
+const storry = require('..')
 
-const store = starry({ users: [] })
+const store = storry({ users: [] })
 
 const addUser = store.action((state, data) =>
   Object.assign({}, state, { users: state.users.concat(data) }))

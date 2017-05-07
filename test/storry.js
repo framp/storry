@@ -1,15 +1,15 @@
 import test from 'tape'
-import starry from '../src/starry'
+import storry from '../src/storry'
 
-test('Starry loads a default state', (assert) => {
+test('Storry loads a default state', (assert) => {
   assert.plan(1)
-  const store = starry({ answer: 42 })
+  const store = storry({ answer: 42 })
   assert.deepEqual(store.state(), { answer: 42 })
 })
 
-test('Starry can run an action', (assert) => {
+test('Storry can run an action', (assert) => {
   assert.plan(2)
-  const store = starry({ answer: 42 })
+  const store = storry({ answer: 42 })
 
   const updateAnswer = (answer) =>
     store.action((state, event) =>
@@ -19,9 +19,9 @@ test('Starry can run an action', (assert) => {
   assert.deepEqual(store.state(), { answer: 43 })
 })
 
-test('Starry can run an action using event data', (assert) => {
+test('Storry can run an action using event data', (assert) => {
   assert.plan(2)
-  const store = starry({ answer: 42 })
+  const store = storry({ answer: 42 })
 
   const updateAnswer = store.action((state, event) =>
     Object.assign({}, state, { answer: event }))
@@ -30,9 +30,9 @@ test('Starry can run an action using event data', (assert) => {
   assert.deepEqual(store.state(), { answer: 43 })
 })
 
-test('Starry call its listeners when state changes', (assert) => {
+test('Storry call its listeners when state changes', (assert) => {
   assert.plan(2)
-  const store = starry({ answer: 42 })
+  const store = storry({ answer: 42 })
   store.listen((state) => {
     assert.deepEqual(store.state(), { answer: 43 })
   })

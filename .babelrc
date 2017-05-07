@@ -2,8 +2,8 @@
   "plugins": [
     ["transform-es2015-modules-umd", {
       "globals": {
-        "starryReact": "Provider",
-        "starryPreact": "Provider"
+        "storryReact": "Provider",
+        "storryPreact": "Provider"
       },
       "exactGlobals": true
     }]

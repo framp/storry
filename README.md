@@ -1,13 +1,13 @@
-# starry
+# storry
 
 State Management made simple!
 
 How simple?
 
 ```javascript
-import starry from 'starry'
+import storry from 'storry'
 
-const store = starry({ user: 'Jack' })
+const store = storry({ user: 'Jack' })
 const updateUser = store.action((state, event) => 
   Object.assign({}, state, { user: event.user}))
 
@@ -20,15 +20,15 @@ assert(store.state().user, 'Mary')
 
  - Want to understand the library more in depth? [Check this explanation!](#step-by-step-explanation)
  - Want to jump to an example with React? [Click here!](#step-by-step-common-preact-pattern)
- - Want to read the code? [It's 8 lines!](src/starry.js)
+ - Want to read the code? [It's 8 lines!](src/storry.js)
  - Want to see even more examples? [Here!](examples)
 
 ## step by step explanation
 
-Starry provides a data store which contains your state.
+Storry provides a data store which contains your state.
 
 ```javascript
-const store = starry({ user: 'Jack' })
+const store = storry({ user: 'Jack' })
 ```
 
 The state can be accessed at any moment.
@@ -67,16 +67,16 @@ store.listen((state) => console.log("I just received a new state", state))
 
 ## (p)react bindings
 
-Starry ships with bindings for [React](https://facebook.github.io/react/) and [Preact](https://preactjs.com/).
+Storry ships with bindings for [React](https://facebook.github.io/react/) and [Preact](https://preactjs.com/).
 
-By importing `starry/starry-preact` or `starry/starry-react` you'll get a `Provider` component which can be used to wrap your application.
+By importing `storry/storry-preact` or `storry/storry-react` you'll get a `Provider` component which can be used to wrap your application.
 
 All the children of `Provider` will receive the state of the application as `props` everytime it's updated.
 
 ```javascript
 //index.js
 ...
-import Provider from 'starry/starry-preact'
+import Provider from 'storry/storry-preact'
 import App from './components/app'
 import store from './store'
 ...
@@ -93,22 +93,22 @@ This step could be, for example, receiving data from an isomorphic/universal app
 
 ```javascript
 //store.js
-import starry from 'starry'
-export default starry({ 
+import storry from 'storry'
+export default storry({ 
   songs: ['My Way', 'Fly Me to the Moon', 'New York, New York'], 
   votes: [0, 0, 0],
   active: 1 
 })
 ```
 
-Let's import our application main component `App` and Starry's `Provider` component.
+Let's import our application main component `App` and Storry's `Provider` component.
 
 We're going to render `App` wrapped in `Provider`, so that `App` will receive the state of our application.
 
 ```javascript
 //index.js
 ...
-import Provider from 'starry/starry-preact'
+import Provider from 'storry/storry-preact'
 import App from './components/app'
 import store from './store'
 ...
@@ -163,4 +163,4 @@ Having a single store and having well defined boundaries to mutate the state of 
 
 Unfortunately it carries a lot of action-related boilerplate and it's hard to teach to unexperienced developers.
 
-Starry wants to preserve the benefits while minimizing boilerplate and while keeping the learning curve shallow.
+Storry wants to preserve the benefits while minimizing boilerplate and while keeping the learning curve shallow.

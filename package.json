@@ -1,11 +1,11 @@
 {
-  "name": "starry",
+  "name": "storry",
   "version": "1.0.0",
   "description": "State Management made simple",
-  "main": "lib/starry.js",
-  "browser": "dist/starry.js",
-  "module": "src/starry.js",
-  "jsnext:main": "src/starry.js",
+  "main": "lib/storry.js",
+  "browser": "dist/storry.js",
+  "module": "src/storry.js",
+  "jsnext:main": "src/storry.js",
   "scripts": {
     "build": "npm run build-commonjs && npm run build-dist && npm run build-umd",
     "build-commonjs": "babel src --out-dir lib --presets es2015 --plugins add-module-exports",
@@ -20,20 +20,21 @@
     "state",
     "simple",
     "management",
+    "storry",
     "redux",
     "flux",
     "elm"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/framp/starry.git"
+    "url": "git+https://github.com/framp/storry.git"
   },
   "author": "Federico Rampazzo <frampone@gmail.com> (http://framp.me)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/framp/starry/issues"
+    "url": "https://github.com/framp/storry/issues"
   },
-  "homepage": "https://github.com/framp/starry#readme",
+  "homepage": "https://github.com/framp/storry#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-plugin-add-module-exports": "^0.2.1",
