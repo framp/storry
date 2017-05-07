@@ -85,6 +85,7 @@ store.listen((state) => console.log("I just received a new state", state))
 Storry ships with bindings for [React](https://facebook.github.io/react/) and [Preact](https://preactjs.com/).
 
 By importing `storry/es/storry-preact` or `storry/es/storry-react` you'll get a `Provider` component which can be used to wrap your application.
+
 If you're using node without `import` support you can use `storry/lib/storry-preact` or `storry/lib/storry-react`.
 
 All the children of `Provider` will receive the state of the application as `props` everytime it's updated.
@@ -246,7 +247,7 @@ This package contains
      - `dist/storry-preact.js`: exports `Provider`
      - `dist/storry-preact.js`: exports `Provider`
 
-Just pick whatever you need for your application and please report if you spot some problems with your setup
+Just pick whatever you need for your application and please report if you spot some problems with your setup.
 
 ## motivations
 
