@@ -88,8 +88,6 @@ Storry ships with bindings for [React](https://facebook.github.io/react/) and [P
 
 By importing `storry/preact` or `storry/react` you'll get a `Provider` component which can be used to wrap your application.
 
-If you're using node without `import` support you can use `storry/lib/storry` + `storry/lib/storry-preact` or `storry/lib/storry-react`.
-
 All the children of `Provider` will receive the state of the application as `props` everytime it's updated.
 
 ```javascript
@@ -230,17 +228,17 @@ render(<Provider store={store}><App /></Provider>)
 ## package structure
 
 This package contains
-  - `import` ready files
-    - `es/storry.js`
-    - `es/storry-preact.js`
-    - `es/storry-react.js`
-    - `index.js`
-    - `preact.js`
-    - `react.js`
   - `require` ready files
     - `lib/storry.js`
     - `lib/storry-preact.js`
     - `lib/storry-react.js`
+    - `index.js`
+    - `preact.js`
+    - `react.js`
+  - `import` ready files
+    - `es/storry.js`
+    - `es/storry-preact.js`
+    - `es/storry-react.js`
   - UMD build
     - `umd/storry.js`: exports `starry`
     - `umd/storry-preact.js`: exports `Provider`

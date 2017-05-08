@@ -16,11 +16,3 @@ node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-/lib
-/umd
-/dist
-/es
-/index.js
-/preact.js
-/react.js

@@ -1,6 +1,6 @@
 {
   "name": "storry",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "State Management made simple",
   "main": "lib/storry.js",
   "browser": "umd/storry.js",
@@ -8,11 +8,11 @@
   "jsnext:main": "es/storry.js",
   "scripts": {
     "build": "npm run build-commonjs && npm run build-dist && npm run build-umd && npm run build-es",
-    "build-commonjs": "babel src --out-dir lib --presets es2015 --plugins add-module-exports",
-    "build-es": "cp -R src es && cp src/storry.js index.js && cp src/storry-preact.js preact.js && cp src/storry-react.js react.js",
+    "build-commonjs": "babel src --out-dir lib --presets es2015 --plugins add-module-exports && cp lib/storry.js index.js && cp lib/storry-preact.js preact.js && cp lib/storry-react.js react.js",
+    "build-es": "cp -R src es",
     "build-umd": "babel src --out-dir umd --presets es2015 --plugins add-module-exports,transform-es2015-modules-umd",
     "build-dist": "mkdir -p dist && for file in browser/*.js; do uglifyjs --compress --mangle --output ${file/browser/dist} -- $file; done",
-    "clean": "rm -rf dist lib umd index.js preact.js react.js",
+    "clean": "rm -rf dist lib umd es index.js preact.js react.js",
     "test": "tape -r babel-register test/**/*.js | faucet",
     "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
     "prepublish": "npm run clean && npm run lint && npm test && npm run build"
