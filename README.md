@@ -1,3 +1,4 @@
+![storry storry night](http://i.imgur.com/F0Hc8Mo.gif)
 # storry
 
 State Management made simple!
