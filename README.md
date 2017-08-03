@@ -57,7 +57,7 @@ When defining our action we can use [ramda](ramdajs.com) or [immutable](https://
 
 ```javascript
 import { Map } from 'immutable'
-const updateUser = store.action((state, event) => state.map('user', event.user))
+const updateUser = store.action((state, event) => state.set('user', event.user))
 ```
 
 ```javascript
