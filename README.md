@@ -261,7 +261,7 @@ The Redux architecture brings to the table a lot of Elm benefits.
 
 Having a single store and having well defined boundaries to mutate the state of your application is a great way to limit errors.
 
-Unfortunately it carries a lot of action-related boilerplate and it's hard to teach to unexperienced developers.
+Unfortunately it carries a lot of action-related boilerplate and it's hard to teach to inexperienced developers.
 
 Storry wants to preserve the benefits while minimizing boilerplate and while keeping the learning curve shallow.
 
