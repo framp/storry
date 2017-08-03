@@ -57,11 +57,13 @@ When defining our action we can use [ramda](ramdajs.com) or [immutable](https://
 
 ```javascript
 import { Map } from 'immutable'
+const store = storry(Map({ user: 'Jack' }))
 const updateUser = store.action((state, event) => state.set('user', event.user))
 ```
 
 ```javascript
 import { set, lensProp } from 'ramda'
+const store = storry({ user: 'Jack' })
 const updateUser = store.action((state, event) => 
   set(lensProp('user'), event.user, state)
 ```
